@@ -1,10 +1,12 @@
-from pydub import AudioSegment
 from os import listdir
+import librosa
+import numpy as np
+import soundfile
+from scipy.io import wavfile
 
 files = listdir(".\\tts\\soundbites\\")
 for file in files:
 	pathf = "./tts/soundbites/"+file
 	print(pathf)
-	sound = AudioSegment.from_wav(pathf)
-	sound = sound.set_channels(1)
-	sound.export(pathf, format="wav")
+	y, sr = librosa.load(pathf, sr=44100)
+	soundfile.write(pathf, y, 44100)
