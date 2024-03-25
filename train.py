@@ -12,7 +12,7 @@ from TTS.tts.utils.text.tokenizer import TTSTokenizer
 from TTS.utils.audio import AudioProcessor
 from TTS.tts.configs.glow_tts_config import GlowTTSConfig
 
-output_path = ".\\tts\\"
+output_path = "./tts/"
 
 dataset_config = BaseDatasetConfig(
     formatter="ljspeech", meta_file_train="soundbites.csv", path=output_path
