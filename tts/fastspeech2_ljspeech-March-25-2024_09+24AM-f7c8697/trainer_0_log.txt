@@ -10,3 +10,8 @@
  | > Torch CUDNN benchmark: False
  | > Torch TF32 MatMul: False
  > Start Tensorboard: tensorboard --logdir=./tts\fastspeech2_ljspeech-March-25-2024_09+24AM-f7c8697
+
+ > Model has 38012259 parameters
+
+[4m[1m > EPOCH: 0/1000[0m
+ --> ./tts\fastspeech2_ljspeech-March-25-2024_09+24AM-f7c8697
