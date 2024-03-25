@@ -9,4 +9,4 @@ for file in files:
 	pathf = "./tts/soundbites/"+file
 	print(pathf)
 	y, sr = librosa.load(pathf, sr=44100)
-	soundfile.write(pathf, librosa.to_mono(y), samplerate=44100)
+	soundfile.write(pathf, librosa.to_mono(y), samplerate=22050)
