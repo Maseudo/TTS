@@ -4,7 +4,7 @@ import numpy as np
 import soundfile
 from scipy.io import wavfile
 
-files = listdir(".\\tts\\soundbites\\")
+files = listdir("./tts/soundbites")
 for file in files:
 	pathf = "./tts/soundbites/"+file
 	print(pathf)
