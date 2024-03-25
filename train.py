@@ -149,12 +149,25 @@ from TTS.utils.audio import AudioProcessor
 
 # we use the same path as this script as our training folder.
 output_path = "./tts"
-
+def formatter(root_path, manifest_file, **kwargs):  # pylint: disable=unused-argument
+    """Assumes each line as ```<filename>|<transcription>```
+    """
+    txt_file = os.path.join(root_path, manifest_file)
+    items = []
+    speaker_name = "my_speaker"
+    with open(txt_file, "r", encoding="utf-8") as ttf:
+        for line in ttf:
+            cols = line.split("|")
+            wav_file = f"./tts/soundbites/{cols[0]}.wav"
+            text = cols[1]
+            # print(text)
+            items.append({"text":text, "audio_file":wav_file, "speaker_name":speaker_name, "root_path": root_path})
+    return items
 # DEFINE DATASET CONFIG
 # Set LJSpeech as our target dataset and define its path.
 # You can also use a simple Dict to define the dataset and pass it to your custom formatter.
 dataset_config = BaseDatasetConfig(
-    formatter="ljspeech", meta_file_train="soundbites.csv", path=output_path
+    formatter=formatter, meta_file_train="soundbites.csv", path=output_path
 )
 
 # INITIALIZE THE TRAINING CONFIGURATION
@@ -195,6 +208,7 @@ tokenizer, config = TTSTokenizer.init_from_config(config)
 # Check `TTS.tts.datasets.load_tts_samples` for more details.
 train_samples, eval_samples = load_tts_samples(
     dataset_config,
+    formatter=formatter,
     eval_split=True,
     eval_split_max_size=config.eval_split_max_size,
     eval_split_size=config.eval_split_size,
