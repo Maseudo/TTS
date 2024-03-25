@@ -167,7 +167,7 @@ def formatter(root_path, manifest_file, **kwargs):  # pylint: disable=unused-arg
 # Set LJSpeech as our target dataset and define its path.
 # You can also use a simple Dict to define the dataset and pass it to your custom formatter.
 dataset_config = BaseDatasetConfig(
-    formatter=formatter, meta_file_train="soundbites.csv", path=output_path
+    formatter="ljspeech", meta_file_train="soundbites.csv", path=output_path
 )
 
 # INITIALIZE THE TRAINING CONFIGURATION
