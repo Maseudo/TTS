@@ -8,5 +8,5 @@ files = listdir("./tts/soundbites")
 for file in files:
 	pathf = "./tts/soundbites/"+file
 	print(pathf)
-	y, sr = librosa.load(pathf, sr=44100)
-	soundfile.write(pathf, librosa.to_mono(y), 44100)
+	y, sr = librosa.load(pathf)
+	soundfile.write(pathf, librosa.to_mono(y), sr=16000, norm=False)
